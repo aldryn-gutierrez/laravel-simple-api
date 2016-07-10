@@ -54,11 +54,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', 'localhost'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'host' => env('http://sql6.freemysqlhosting.net', 'localhost'),
+            'port' => env('3306', '3306'),
+            'database' => env('sql6127239', 'forge'),
+            'username' => env('sql6127239', 'forge'),
+            'password' => env('2NMi3MEbTY', ''),
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
