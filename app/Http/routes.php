@@ -15,4 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('data', 'DataController', ['only' => ['index', 'show', 'store']]);
+Route::resource('object', 'DataController', ['only' => ['index', 'show', 'store']]);
