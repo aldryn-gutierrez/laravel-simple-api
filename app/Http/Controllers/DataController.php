@@ -18,7 +18,7 @@ class DataController extends Controller
      */
     public function index()
     {
-    	return $this->formResponse([]);
+        return $this->formResponse([]);
     }
 
     /**
@@ -29,22 +29,22 @@ class DataController extends Controller
      */
     public function store(Request $request, DataService $ds)
     {
-    	if (is_null($request->input('json'))) {
-    		return $this->formResponse(
-    			['error' => 'JSON field required'],
-    			400
-    		);
-    	}
+        if (is_null($request->input('json'))) {
+            return $this->formResponse(
+                ['error' => 'JSON field required'],
+                400
+            );
+        }
 
-    	$decodedJson = json_decode($request->input('json'));
-    	if (json_last_error() != JSON_ERROR_NONE) {
-    		return $this->formResponse(
-    			['error' => 'Invalid JSON found'],
-    			400
-    		);
-    	}
+        $decodedJson = json_decode($request->input('json'));
+        if (json_last_error() != JSON_ERROR_NONE) {
+            return $this->formResponse(
+                ['error' => 'Invalid JSON found'],
+                400
+            );
+        }
 
-    	$ds->save($decodedJson);
+        $ds->save($decodedJson);
     }
 
     /**
@@ -55,14 +55,14 @@ class DataController extends Controller
      */
     public function show($key, Request $request, DataService $ds)
     {
-    	$data = $ds->get($key, $request->input('timestamp'));
-    	
-    	if (is_null($data)) {
-    		return $this->formResponse(
-    			['error' => 'No record found'],
-    			400
-    		);
-    	}
+        $data = $ds->get($key, $request->input('timestamp'));
+        
+        if (is_null($data)) {
+            return $this->formResponse(
+                ['error' => 'No record found'],
+                400
+            );
+        }
 
         return $this->formResponse($data->value);
     }

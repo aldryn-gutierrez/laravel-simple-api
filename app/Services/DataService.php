@@ -8,27 +8,26 @@ class DataService
 {
     public function get($key, $timestamp = null)
     {
-    	$dataQuery = Data::where('key', $key);
+        $dataQuery = Data::where('key', $key);
 
-    	if (!is_null($timestamp)) {
-    		$dataQuery->where('timestamp', '<=', $timestamp);
-    	}
+        if (!is_null($timestamp)) {
+            $dataQuery->where('timestamp', '<=', $timestamp);
+        }
 
-    	$data =	$dataQuery->orderBy('id', 'desc')
-    		->first();
+        $data = $dataQuery->orderBy('id', 'desc')
+            ->first();
 
-    	return $data;
+        return $data;
     }
 
     public function save(\stdClass $records)
     {
-    	var_dump($records);
-    	foreach ($records as $key => $record) {
-	    	$data = new Data();
-	    	$data->key = $key;
-	    	$data->value = $record;
-	    	$data->timestamp = time();
-	    	$data->save();
-    	}
+        foreach ($records as $key => $record) {
+            $data = new Data();
+            $data->key = $key;
+            $data->value = $record;
+            $data->timestamp = time();
+            $data->save();
+        }
     }
 }
